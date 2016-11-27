@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Component State</title>
+		<script src="js/react.js"></script>
+		<script src="js/react-dom.js"></script>
+	    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>		
+	</head>
+	<body>
+		<div id="app"></div>
+	    
+	    <!-- You can also render same Html by using JSX syntax  -->
+	    <script type="text/babel">
+
+	    	var FirstComponent = React.createClass({
+
+				/**
+					propTypes is used to given informtion about the props you are going to use 
+					by using this you can put validation like:  
+						1. props need to be string, numeric and boolean etc. 
+						2. validate  its required. 
+				*/
+		    	propTypes: {
+		    		name: React.PropTypes.string.isRequired
+		    	},
+
+	    		/** 
+	    			This function is used to inizialize all the props that we are going to  used in our component
+	    			This function is going to be called with before render method
+	    		*/
+	    		getDefaultProps: function(){ 
+	    			return { 
+	    				name: 'Abhishek'
+	    			}
+	    		},
+
+	    		getInitialState: function(){
+	    			return {
+		    			count: 1	
+	    			}
+	    		},
+
+	    		componentDidMount: function(){
+	    			this.setState({
+	    				count: 2
+	    			});
+	    		},
+
+	    		incrementCounter: function(){
+	    			this.setState({
+	    				count: this.state.count + 1	
+	    			});
+	    		},
+
+	    		render: function(){
+	    			return (
+	    				<div>
+							<h1> Hello {this.props.name}, this is my first Component </h1>
+							<p onClick={this.incrementCounter}> 
+								{this.state.count}  Click Me!!
+							</p>
+						</div>	
+	    			);
+	    		}
+
+	    	});
+
+			ReactDOM.render(
+				<FirstComponent />,
+        		document.getElementById('app')
+		    );
+	    </script>
+
+	</body>
+</html>
