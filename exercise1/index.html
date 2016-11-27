@@ -8,12 +8,22 @@
 	    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>		
 	</head>
 	<body>
-		<div id="root"></div>
-	    <script type="text/babel">
+		<div id="app1"></div>
+		<div id="app2"></div>
+	    <!-- You can also render same Html by without using JSX syntax  -->
+	    <script type="text/javascript">
 			ReactDOM.render(
 		        React.createElement('h1', null, 'Hello World !!'),
-        		document.getElementById('root')
+        		document.getElementById('app1')
 		    );
 	    </script>
+	    <!-- You can also render same Html by using JSX syntax  -->
+	    <script type="text/babel">
+			ReactDOM.render(
+				<h1> Hello World! </h1>,
+        		document.getElementById('app2')
+		    );
+	    </script>
+
 	</body>
 </html>
